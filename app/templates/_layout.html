@@ -1,0 +1,65 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>{{ title }}</title>
+    {% block assets %}
+    {%  endblock %}
+</head>
+<body>
+
+<div class="body-content wrapper container-fluid">
+
+    <nav id="sidebar">
+        <div class="sidebar-header container">
+            <div class="row no-gutters">
+                <div class="col-lg-8 col-sm-12"><h3>Sidebar Header</h3></div>
+                <div class="col-lg-4 col-sm-12"><h3>Boop</h3></div>
+            </div>
+        </div>
+
+        <ul class="list-unstyled components">
+            <p>Text</p>
+            <li class="active">
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tools</a>
+                <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <li><a href="{{ url_for('upload.upload') }}">Upload</a></li>
+{#                    <li><a href="{{ url_for('upload7days.upload_7days') }}">Upload-7-Days</a></li>#}
+                    <li><a href="{{ url_for('value_search.value_searching') }}">Value Search</a></li>
+                    <li><a href="{{ url_for('sphere2riches.s2r_page') }}">Sphere-2-Riches</a></li>
+                    <li><a href="{{ url_for('waypoints2riches.w2r_page') }}">Waypoints-2-Riches</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="{{ url_for('home.shutdown') }}">Exit</a>
+            </li>
+        </ul>
+    </nav>
+
+
+    <div id="content" class="container-fluid">
+        {# Mark: Heading #}
+        {% block heading %}
+        {% endblock %}
+
+        {# Mark: Body #}
+        {% block body %}
+                <p>Empty <code>body</code> block !!</p>
+        {% endblock %}
+    </div>
+
+</div>
+
+</body>
+
+{# Mark: Scripts #}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="../static/js/modernizr-custom.min.js"></script>
+<script src="../static/js/scripts.min.js"></script>
+{% block scripts %}
+{% endblock %}
+</html>

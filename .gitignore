@@ -1,0 +1,5 @@
+DL/
+.idea/
+__pycache__/
+*.pyc
+backup/
