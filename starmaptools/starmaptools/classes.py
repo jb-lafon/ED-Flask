@@ -28,18 +28,30 @@ class Engine:
             self.__setattr__(key, value)
         return self
     
-    def select_all(table_name=""):
-         return "SELECT * FROM {db}.{t} ".format(db=DBNAME, t=table_name)
-         
-    
-class Systems:
-    def __init__(self, ENGINE=Engine().ENGINE):
+class SQLQuery:
+    def __new__(self, query="", filter="", limit=None, ENGINE=Engine().ENGINE, TABLE='systemswithcoordinates'):
         self.ENGINE = ENGINE
-        self.TABLE = 'systemswithcoordinates'
+        self.TABLE = TABLE
+        query  = query + "FROM {d}.{t}".format(d=DBNAME, t=self.TABLE)
+        if filter != '':
+            query = query + " WHERE {f}".format(f=filter)
+        if limit != None:
+            query = query + " LIMIT {l}".format(l=limit)
+        response = pd.read_sql_query(query, self.ENGINE)
+        return response
+         
+class Systems:
+    def __init__(self, ENGINE=Engine().ENGINE, TABLE='systemswithcoordinates'):
+        self.ENGINE = ENGINE
+        self.TABLE = TABLE
         return None
     
-    def all(self):
+    def all(self, filter='', limit=None):
         q = "SELECT * FROM {db}.{t}".format(db=DBNAME, t=self.TABLE)
+        if filter != '':
+            q = q + " WHERE {f}".format(f=filter)
+        if limit != None:
+            q = q + " LIMIT {l}".format(l=limit)
         systems = pd.read_sql_query(q, self.ENGINE)
         return systems
     
