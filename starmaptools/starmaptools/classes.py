@@ -41,12 +41,12 @@ class Engine:
 
     
 #---------------------------------------------------------------------------
-# *                           ENGINE
-# ?  Main class for connecting to database
-# @param hostname string  
-# @param dbname string  
-# @param uname string  
-# @param pwd string  
+# *                           SQL QUERY
+# ?  Class for performing a simple query
+# @param query string  
+# @param filter string  
+# @param limit integer  
+# @param table string 
 #---------------------------------------------------------------------------
     
 class SQLQuery:
