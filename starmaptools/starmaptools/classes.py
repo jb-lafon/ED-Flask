@@ -116,3 +116,13 @@ class Systems:
         else:
             systems = self.all(filter="`value` {f}".format(f=filter))
         return systems
+
+#---------------------------------------------------------------------------
+# *                           VALUED SYSTEMS
+# ?  A class focusing on systems with values
+#---------------------------------------------------------------------------
+class ValuedSystems:
+    def __new__(self, ENGINE=Engine().ENGINE):
+        self.ENGINE = ENGINE
+        self.ValuedSystems = Systems().by_value(filter='>1')
+        return self.ValuedSystems
