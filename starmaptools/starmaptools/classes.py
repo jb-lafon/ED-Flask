@@ -1,6 +1,7 @@
 from .config import *
 
 import pandas as pd
+import numpy as np
 from sqlalchemy import create_engine
 
 #---------------------------------------------------------------------------
@@ -74,7 +75,10 @@ class Systems:
     
     #===========================
     # *   all
-    # ? Returns systems with corresponding name
+    # ? Returns all systems
+    # @param filter string 
+    # @param limit integer
+    # @return pd.Dataframe 
     #===========================
     
     def all(self, filter='', limit=None):
@@ -96,4 +100,19 @@ class Systems:
     def find_by_name(self, system_name=""):
         q = Engine.select_all(self.TABLE) + "WHERE name='{n}'".format(n=system_name)
         systems = pd.read_sql_query(q, self.ENGINE)
+        return systems
+    
+    #===========================
+    # *   by_value
+    # ? Returns systems with corresponding name
+    # @param filter string
+    # @param limit integer
+    # @return pd.Dataframe
+    #===========================
+    
+    def by_value(self, filter="IS NULL", limit=None):
+        if limit is not None:
+            systems = self.all(filter="`value` {f} {l}".format(f=filter, l=limit))
+        else:
+            systems = self.all(filter="`value` {f}".format(f=filter))
         return systems
