@@ -37,7 +37,6 @@ class Engine:
         for (key, value) in databases.items():
             self.__setattr__(key, value)
         return self
-#----------------------------- END OF SECTION ------------------------------
 
     
 #---------------------------------------------------------------------------
@@ -59,12 +58,11 @@ class SQLQuery:
             query = query + " LIMIT {l}".format(l=limit)
         response = pd.read_sql_query(query, self.ENGINE)
         return response
-#----------------------------- END OF SECTION ------------------------------
 
 
 #---------------------------------------------------------------------------
 # *                           SYSTEMS
-# ?  Main class for connecting to database
+# ?  Class for queries and filters on systems
 #---------------------------------------------------------------------------
          
 class Systems:
@@ -121,6 +119,7 @@ class Systems:
 # *                           VALUED SYSTEMS
 # ?  A class focusing on systems with values
 #---------------------------------------------------------------------------
+
 class ValuedSystems:
     def __new__(self, ENGINE=Engine().ENGINE):
         self.ENGINE = ENGINE
