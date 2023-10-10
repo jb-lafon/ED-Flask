@@ -37,6 +37,10 @@ class Engine:
         for (key, value) in databases.items():
             self.__setattr__(key, value)
         return self
+    
+    def create_cache(self, dataframe:pd.DataFrame, path="./cached_df_.pkl"):
+        dataframe.to_pickle(path)
+        return None
 
     
 #---------------------------------------------------------------------------
@@ -79,12 +83,17 @@ class Systems:
     # @return pd.Dataframe 
     #===========================
     
-    def all(self, filter='', limit=None):
+    def all(self, filter='', limit=None, chunksize=None):
         q = "SELECT * FROM {db}.{t}".format(db=DBNAME, t=self.TABLE)
         if filter != '':
             q = q + " WHERE {f}".format(f=filter)
         if limit != None:
             q = q + " LIMIT {l}".format(l=limit)
+        systems = pd.DataFrame()
+        if chunksize is not None:
+            stream = pd.read_sql_query(q, self.ENGINE, chunksize=chunksize)
+            for df in stream:
+                systems = df
         systems = pd.read_sql_query(q, self.ENGINE)
         return systems
     
