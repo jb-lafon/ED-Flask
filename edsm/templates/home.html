@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block assets %}
+    {% assets "home_css" %}
+            <link rel="stylesheet" href="{{ ASSET_URL }}" />
+    {% endassets %}
+{% endblock %}
+
+{#{% block heading %}#}
+{#<h1>Welcome Commander</h1>#}
+{#{% endblock %}#}
+
+{% block body %}
+
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-3"></div>
+            <div class="col-auto" id="login-card">
+                <img id="ED-logo" src="../static/img/svg/Logos/ED-Logo-Orange.svg" alt="Elite Dangerous Logo">
+                <div class="row justify-content-center">
+                    <button type="button" class="std-button">Login</button>
+                </div>
+                <div class="row justify-content-center">
+                    <button type="button" class="std-button">Sign Up</button>
+                </div>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+
+{% endblock %}

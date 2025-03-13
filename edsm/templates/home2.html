@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block assets %}
+    {% assets "home_css" %}
+            <link rel="stylesheet" href="{{ ASSET_URL }}" />
+    {% endassets %}
+{% endblock %}
+
+{% block heading %}
+<h1>Welcome Commander</h1>
+{% endblock %}
+
+{% block body %}
+{#    <p>{{ result }}</p>#}
+
+    <a href="{{ url_for('login.login') }}">Login</a>
+    <br>
+    <a href="{{ url_for('sphere2riches.sphere2riches') }}">Sphere2Riches</a>
+
+{#    <div class="alert alert-primary" role="alert">#}
+{#        A simple primary alert—check it out!#}
+{#    </div>#}
+
+{% endblock %}

@@ -1,0 +1,10 @@
+@import "globals";
+
+$primary: $orange;
+$secondary: black;
+
+$table-border-color: $orange;
+$table-head-color: black;
+$table-head-bg: $orange;
+
+@import "bootstrap/scss/bootstrap";
