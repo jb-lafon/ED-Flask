@@ -2,7 +2,7 @@
 
 A python web server running tools for Elite Dangerous.
 
->> This is a work in progress and is not yet ready for production use. The project will not work without the database abut please feel free to ttake a look at the code and contribute.
+> This is a work in progress and is not yet ready for production use. The project will not work without the database abut please feel free to ttake a look at the code and contribute.
 
 ## Installation
 
