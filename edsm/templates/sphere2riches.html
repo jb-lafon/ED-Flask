@@ -1,0 +1,98 @@
+{% extends 'layout.html' %}
+
+{% block assets %}
+    {% assets "s2r_css" %}
+            <link rel="stylesheet" href="{{ ASSET_URL }}" />
+    {% endassets %}
+{% endblock %}
+
+{% block heading %}
+<h1>Sphere - 2 - Riches</h1>
+{% endblock %}
+
+{% block body %}
+{#    <div class="row">#}
+{#        <form action="" method="post" class="col">#}
+{#                <div class="row name">#}
+{#                    {{ form.name.label }} - {{ form.name(placeholder = 'Sol', class_ = 'sysName') }}#}
+{#                </div>#}
+{#                <div class="row minRadius">#}
+{#                    {{ form.minRadius.label }} - {{ form.minRadius }}#}
+{#                </div>#}
+{#                <div class="row maxRadius">#}
+{#                    {{ form.maxRadius.label }} - {{ form.maxRadius }}#}
+{#                </div>#}
+{#                <div class="row valueLmit">#}
+{#                    {{ form.valueLimit.label }} - {{ form.valueLimit }}#}
+{#                </div>#}
+{##}
+{#            {{ form.csrf_token }}#}
+{##}
+    {#        <button type="submit" class="std-button">Find $$$</button>#}
+{#                <div class="row">#}
+{#                    <button type="submit" class="button button--aylen button--text-thick button--border-thin">Find $$$</button>#}
+{#                </div>#}
+{#        </form>#}
+{#    </div>#}
+    <div class="row">
+        <div class="col-4">
+            <form action="" method="post">
+                <div class="form-group row">
+                    {{ form.name.label(for = 'name', class_='col-4') }}
+                    {{ form.name(placeholder = 'Sol', class_ = 'sysName col-8', id='name') }}
+                </div>
+                <div class="form-group row">
+                    {{ form.minRadius.label(for = 'minRadius', class_='col-4') }}
+                    {{ form.minRadius(id='minRadius', class_ = 'col-8') }}
+                </div>
+                <div class="form-group row">
+                    {{ form.maxRadius.label(for = 'maxRadius', class_='col-4') }}
+                    {{ form.maxRadius(id='maxRadius', class_ = 'col-8') }}
+                </div>
+                <div class="form-group row">
+                    {{ form.valueLimit.label(for = 'valueLimit', class_='col-4') }}
+                    {{ form.valueLimit(id='valueLimit', class_ = 'col-8') }}
+                </div>
+                {{ form.csrf_token }}
+                <div class="form-group row">
+                    <button id="s2r-submit" type="submit" class="button button--aylen button--text-thick button--border-thin">Find $$$</button>
+                    <div id="loader"></div>
+                </div>
+            </form>
+        </div>
+        <div class="col-8">
+            <table class="table">
+                 <thead class="thead-light">
+                    {% for result in res %}
+                        {% if result == res[0] %}
+                                <tr>
+                                    <th scope="col">{{ result['name'] }}</th>
+                                    <th scope="col">{{ result['value'] }}</th>
+                                    <th scope="col">{{ result['dist'] }}</th>
+                                </tr>
+                        {% endif %}
+                    {% endfor %}
+                 </thead>
+                <tbody>
+                    {% for result in res %}
+                        {% if result != res[0] %}
+                            <tr>
+                                <td scope="row">{{ result['name'] }}</td>
+                                <td>{{ result['value'] }}</td>
+                                <td>{{ result['dist'] }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <a href="./exit" style='font-family: "Eurocaps";font-size: 20px;font-weight: bold'>EXIT</a> <- End program FOREVEEEEER ☠️☠️☠️
+
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="../static/js/s2r.js"></script>
+{% endblock %}

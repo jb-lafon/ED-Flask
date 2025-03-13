@@ -1,0 +1,35 @@
+<html>
+<head>
+    <title>{{ title }}</title>
+    {% block assets %}
+    {%  endblock %}
+</head>
+<body>
+
+{# Mark: Navbar #}
+<div class="navbar navbar-dark">
+    <!-- Navbar brand -->
+    <a class="navbar-brand" href="{{ url_for('home.home') }}">Navbar</a>
+    <!-- Collapse button -->
+    <button></button>
+</div>
+
+<div class="body-content">
+{# Mark: Heading #}
+{% block heading %}
+{% endblock %}
+
+{# Mark: Body #}
+{% block body %}
+        <p>Empty <code>body</code> block !!</p>
+{% endblock %}
+</div>
+</body>
+
+{# Mark: Scripts #}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../static/js/modernizr-custom.js"></script>
+<script src="../static/js/scripts.js"></script>
+{% block scripts %}
+{% endblock %}
+</html>

@@ -1,0 +1,6 @@
+*.code-workspace
+.conda
+*.json
+.DS_Store
+.idea/
+

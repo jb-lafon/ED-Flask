@@ -1,0 +1,10 @@
+passlib
+pyquery
+requests
+wtforms
+mysql
+flask
+flask_assets
+flask_wtf
+mysql-connector
+
